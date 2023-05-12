@@ -16,9 +16,11 @@ class JobsController < ApplicationController
       render :new, status: :unprocessable_entity
     end
   end
-end
 
-private_methods
-def job_params
-  params.require(:job).permit(:title,:company,:location,:link)
+  private
+
+  def job_params
+    params.require(:job).permit(:title, :company, :location, :link)
+  end
+
 end
