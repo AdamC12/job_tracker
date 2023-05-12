@@ -1,5 +1,10 @@
 <h1> Jobs!</h1>
 
+
+<header style="text-align: right">
+  <%=  button_to "New Job", new_job_path, method: :get %>
+</header>
+
 <% @jobs.each do |job| %>
   <div class="job">
     <div class="container">
