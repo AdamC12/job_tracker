@@ -28,3 +28,7 @@
 .container {
     padding: 2px 16px;
 }
+
+.home_link {
+    color: blue;
+}
