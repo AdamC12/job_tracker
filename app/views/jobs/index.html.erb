@@ -12,6 +12,7 @@
       <p><%= job.link%></p>
       <p><%= job.company%></p>
       <p><%= job.location%></p>
+      <p><%= button_to "Edit", edit_job_path(job.id), method: :get %></p>
     </div>
   </div>
 <% end %>
