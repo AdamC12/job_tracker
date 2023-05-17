@@ -1,5 +1,5 @@
 class JobsController < ApplicationController
-  before_action :set_job, only: [:update, :edit]
+  before_action :set_job, only: [:update, :edit, :destroy]
   def index
     @jobs = Job.all
   end
@@ -26,6 +26,14 @@ class JobsController < ApplicationController
     else
       render :edit, status: :unprocessable_entity
     end
+  end
+
+  def destroy
+      if @job.destroy
+        redirect_to root_path
+      else
+        raise error
+      end
   end
 
   private
