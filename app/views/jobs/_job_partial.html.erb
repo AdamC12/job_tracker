@@ -28,6 +28,12 @@
   </div>
 
   <div>
+    <%= form.label :status %>
+    <%= form.select :status, %w[Interested Applied Interviewed Offered Rejected], :prompt => 'Status' %>
+  </div>
+
+
+  <div>
     <%= form.button %>
   </div>
 
