@@ -5,34 +5,33 @@
 </header>
 
 <h2> Interested</h2>
-<% @jobs.select{|job| job.has_status?("Interested")}.each do |job| %>
-  <%= render partial: "job_card_partial", locals: { job: job } %>
+  <% @jobs.select { |job| job.has_status?("Interested") }.each do |job| %>
+    <%= render partial: "job_card_partial", locals: { job: job } %>
 <% end %>
 
 <h2> Applied</h2>
-<% @jobs.select{|job| job.has_status?("Applied")}.each do |job| %>
-  <%= render partial: "job_card_partial", locals: { job: job } %>
+  <% @jobs.select { |job| job.has_status?("Applied") }.each do |job| %>
+    <%= render partial: "job_card_partial", locals: { job: job } %>
 <% end %>
 
-
 <h2> Interviewed</h2>
-<% @jobs.select{|job| job.has_status?("Interviewed")}.each do |job| %>
-  <%= render partial: "job_card_partial", locals: { job: job } %>
+  <% @jobs.select { |job| job.has_status?("Interviewed") }.each do |job| %>
+   <%= render partial: "job_card_partial", locals: { job: job } %>
 <% end %>
 
 <h2> Offered</h2>
-<% @jobs.select{|job| job.has_status?("Offered")}.each do |job| %>
-  <%= render partial: "job_card_partial", locals: { job: job } %>
+  <% @jobs.select { |job| job.has_status?("Offered") }.each do |job| %>
+    <%= render partial: "job_card_partial", locals: { job: job } %>
 <% end %>
 
 
 <h2> Rejected</h2>
-<% @jobs.select{|job| job.has_status?("Rejected")}.each do |job| %>
-  <%= render partial: "job_card_partial", locals: { job: job } %>
+  <% @jobs.select { |job| job.has_status?("Rejected") }.each do |job| %>
+    <%= render partial: "job_card_partial", locals: { job: job } %>
 <% end %>
 
 
 <h2> No Status</h2>
-<% @jobs.select{|job| job.has_status?(nil)}.each do |job| %>
-  <%= render partial: "job_card_partial", locals: { job: job } %>
+  <% @jobs.select { |job| job.has_status?(nil) }.each do |job| %>
+    <%= render partial: "job_card_partial", locals: { job: job } %>
 <% end %>
