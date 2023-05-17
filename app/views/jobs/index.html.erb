@@ -6,48 +6,30 @@
 
 <h2> Interested</h2>
 <% @interested_jobs.each do |job| %>
-  <div class="job">
-    <div class="container">
-      <%= render partial:"job_card_partial", locals:{job: job} %>    </div>
-  </div>
+  <%= render partial: "job_card_partial", locals: { job: job } %>
 <% end %>
+
 <h2> Applied</h2>
 <% @applied_jobs.each do |job| %>
-  <div class="job">
-    <div class="container">
-      <%= render partial:"job_card_partial", locals:{job: job} %>
-    </div>
-  </div>
+  <%= render partial: "job_card_partial", locals: { job: job } %>
 <% end %>
+
 <h2> Interviewed</h2>
 <% @interviewed_jobs.each do |job| %>
-  <div class="job">
-    <div class="container">
-      <%= render partial:"job_card_partial", locals:{job: job} %>
-    </div>
-  </div>
+  <%= render partial: "job_card_partial", locals: { job: job } %>
 <% end %>
+
 <h2> Offered</h2>
 <% @offered_jobs.each do |job| %>
-  <div class="job">
-    <div class="container">
-      <%= render partial:"job_card_partial", locals:{job: job} %>
-    </div>
-  </div>
+  <%= render partial: "job_card_partial", locals: { job: job } %>
 <% end %>
+
 <h2> Rejected</h2>
 <% @rejected_jobs.each do |job| %>
-  <div class="job">
-    <div class="container">
-      <%= render partial:"job_card_partial", locals:{job: job} %>
-    </div>
-  </div>
+  <%= render partial: "job_card_partial", locals: { job: job } %>
 <% end %>
+
 <h2> No Status</h2>
 <% @no_status_jobs.each do |job| %>
-  <div class="job">
-    <div class="container">
-      <%= render partial:"job_card_partial", locals:{job: job} %>
-    </div>
-  </div>
+  <%= render partial: "job_card_partial", locals: { job: job } %>
 <% end %>
