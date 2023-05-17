@@ -4,4 +4,7 @@ class Job < ApplicationRecord
   validates :company, presence:true
   validates :link, presence:true
   validates :status, presence:true
+  def has_status?(job_status)
+    status == job_status
+  end
 end
