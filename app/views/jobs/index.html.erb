@@ -8,27 +8,14 @@
 <% @interested_jobs.each do |job| %>
   <div class="job">
     <div class="container">
-      <h4><b><%= job.title %></b></h4>
-      <p><%= job.link %></p>
-      <p><%= job.company %></p>
-      <p><%= job.location %></p>
-      <p><%= job.status %></p>
-      <p><%= button_to "Edit", edit_job_path(job.id), method: :get %></p>
-      <p><%= button_to "Delete", job, method: :delete, data: { turbo_confirm: "Are you sure?" } %></p>
-    </div>
+      <%= render partial:"job_card_partial", locals:{job: job} %>    </div>
   </div>
 <% end %>
 <h2> Applied</h2>
 <% @applied_jobs.each do |job| %>
   <div class="job">
     <div class="container">
-      <h4><b><%= job.title %></b></h4>
-      <p><%= job.link %></p>
-      <p><%= job.company %></p>
-      <p><%= job.location %></p>
-      <p><%= job.status %></p>
-      <p><%= button_to "Edit", edit_job_path(job.id), method: :get %></p>
-      <p><%= button_to "Delete", job, method: :delete, data: { turbo_confirm: "Are you sure?" } %></p>
+      <%= render partial:"job_card_partial", locals:{job: job} %>
     </div>
   </div>
 <% end %>
@@ -36,13 +23,7 @@
 <% @interviewed_jobs.each do |job| %>
   <div class="job">
     <div class="container">
-      <h4><b><%= job.title %></b></h4>
-      <p><%= job.link %></p>
-      <p><%= job.company %></p>
-      <p><%= job.location %></p>
-      <p><%= job.status %></p>
-      <p><%= button_to "Edit", edit_job_path(job.id), method: :get %></p>
-      <p><%= button_to "Delete", job, method: :delete, data: { turbo_confirm: "Are you sure?" } %></p>
+      <%= render partial:"job_card_partial", locals:{job: job} %>
     </div>
   </div>
 <% end %>
@@ -50,13 +31,7 @@
 <% @offered_jobs.each do |job| %>
   <div class="job">
     <div class="container">
-      <h4><b><%= job.title %></b></h4>
-      <p><%= job.link %></p>
-      <p><%= job.company %></p>
-      <p><%= job.location %></p>
-      <p><%= job.status %></p>
-      <p><%= button_to "Edit", edit_job_path(job.id), method: :get %></p>
-      <p><%= button_to "Delete", job, method: :delete, data: { turbo_confirm: "Are you sure?" } %></p>
+      <%= render partial:"job_card_partial", locals:{job: job} %>
     </div>
   </div>
 <% end %>
@@ -64,13 +39,7 @@
 <% @rejected_jobs.each do |job| %>
   <div class="job">
     <div class="container">
-      <h4><b><%= job.title %></b></h4>
-      <p><%= job.link %></p>
-      <p><%= job.company %></p>
-      <p><%= job.location %></p>
-      <p><%= job.status %></p>
-      <p><%= button_to "Edit", edit_job_path(job.id), method: :get %></p>
-      <p><%= button_to "Delete", job, method: :delete, data: { turbo_confirm: "Are you sure?" } %></p>
+      <%= render partial:"job_card_partial", locals:{job: job} %>
     </div>
   </div>
 <% end %>
@@ -78,13 +47,7 @@
 <% @no_status_jobs.each do |job| %>
   <div class="job">
     <div class="container">
-      <h4><b><%= job.title %></b></h4>
-      <p><%= job.link %></p>
-      <p><%= job.company %></p>
-      <p><%= job.location %></p>
-      <p><%= job.status %></p>
-      <p><%= button_to "Edit", edit_job_path(job.id), method: :get %></p>
-      <p><%= button_to "Delete", job, method: :delete, data: { turbo_confirm: "Are you sure?" } %></p>
+      <%= render partial:"job_card_partial", locals:{job: job} %>
     </div>
   </div>
 <% end %>
