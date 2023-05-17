@@ -3,6 +3,12 @@ class JobsController < ApplicationController
 
   def index
     @jobs = Job.all
+    @applied_jobs = Job.where(status: 'Applied')
+    @interested_jobs = Job.where(status: 'Interested')
+    @interviewed_jobs = Job.where(status: 'Interviewed')
+    @offered_jobs = Job.where(status: 'Offered')
+    @rejected_jobs = Job.where(status: 'Rejected')
+    @no_status_jobs = Job.where(status: nil)
   end
 
   def new
