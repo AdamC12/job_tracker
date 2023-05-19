@@ -1,47 +1,28 @@
 <% if user_signed_in? %>
-  <%= link_to "Profile", edit_user_registration_path %>
-  <%= button_to "Log Out", destroy_user_session_path, method: :delete %>
 
+  <h2 class="header">
+    <div style="text-align: center"> Jobs!</div>
 
-  <h1> Jobs!</h1>
+    <div style="text-align: right">
+      <%= button_to "New Job", new_job_path, method: :get %>
+    </div>
+  </h2>
 
-  <header style="text-align: right">
-    <%= button_to "New Job", new_job_path, method: :get %>
-  </header>
+  <% %w[Interested Applied Interviewed Offered Rejected].each do |status| %>
 
-  <h2> Interested</h2>
-  <% @jobs.select { |job| job.has_status?("Interested") }.each do |job| %>
-    <%= render partial: "job_card_partial", locals: { job: job } %>
-  <% end %>
-
-  <h2> Applied</h2>
-  <% @jobs.select { |job| job.has_status?("Applied") }.each do |job| %>
-    <%= render partial: "job_card_partial", locals: { job: job } %>
-  <% end %>
-
-  <h2> Interviewed</h2>
-  <% @jobs.select { |job| job.has_status?("Interviewed") }.each do |job| %>
-    <%= render partial: "job_card_partial", locals: { job: job } %>
-  <% end %>
-
-  <h2> Offered</h2>
-  <% @jobs.select { |job| job.has_status?("Offered") }.each do |job| %>
-    <%= render partial: "job_card_partial", locals: { job: job } %>
-  <% end %>
-
-
-  <h2> Rejected</h2>
-  <% @jobs.select { |job| job.has_status?("Rejected") }.each do |job| %>
-    <%= render partial: "job_card_partial", locals: { job: job } %>
+    <% if @jobs.any? { |job| job.status == status } %>
+      <h3> <%= status  %></h3>
+      <% @jobs.select { |job| job.has_status?(status) }.each do |job| %>
+        <%= render partial: "job_card_partial", locals: { job: job } %>
+      <% end %>
+    <% end %>
   <% end %>
 
 <% else %>
-  <h1 style="text-align: right">
-    <%= button_to "Sign In", user_session_path %>
-  </h1>
   <h1 style="text-align: center"> Job Tracker</h1>
   <h2 style="text-align: center">
     Start tracking your application process today by
     <%= link_to "Signing Up", new_user_registration_path %>
   </h2>
 <% end %>
+
