@@ -1,23 +1,28 @@
 <% if user_signed_in? %>
 
-  <h2 class="header">
-    <div style="text-align: center"> Jobs!</div>
+  <% if @jobs.any? %>
 
-    <div style="text-align: right">
-      <%= button_to "New Job", new_job_path, method: :get %>
-    </div>
-  </h2>
+    <h2 class="header">
+      <div style="text-align: center"> Jobs!</div>
 
-  <% %w[Interested Applied Interviewed Offered Rejected].each do |status| %>
+      <div style="text-align: right">
+        <%= button_to "New Job", new_job_path, method: :get %>
+      </div>
+    </h2>
 
-    <% if @jobs.any? { |job| job.status == status } %>
-      <h3> <%= status  %></h3>
-      <% @jobs.select { |job| job.has_status?(status) }.each do |job| %>
-        <%= render partial: "job_card", locals: { job: job } %>
+    <% %w[Interested Applied Interviewed Offered Rejected].each do |status| %>
+
+      <% if @jobs.any? { |job| job.status == status } %>
+        <h3> <%= status %></h3>
+        <% @jobs.select { |job| job.has_status?(status) }.each do |job| %>
+          <%= render partial: "job_card", locals: { job: job } %>
+        <% end %>
       <% end %>
     <% end %>
+  <% else %>
+    Add your first job here:
+    <%= link_to "New Job", new_job_path %>
   <% end %>
-
 <% else %>
   <h1 style="text-align: center"> Job Tracker</h1>
   <h2 style="text-align: center">
