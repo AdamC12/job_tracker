@@ -1,3 +1,6 @@
-<h1> Edit Job</h1>
-
-<%= render partial:"job_partial", locals:{job: @job} %>
+<% if user_signed_in? %>
+  <h1> Edit Job</h1>
+  <%= render partial: "job", locals: { job: @job } %>
+<% else %>
+  <% controller.redirect_to root_path %>
+<% end %>
