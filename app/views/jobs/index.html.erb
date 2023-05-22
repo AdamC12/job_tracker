@@ -13,7 +13,7 @@
     <% if @jobs.any? { |job| job.status == status } %>
       <h3> <%= status  %></h3>
       <% @jobs.select { |job| job.has_status?(status) }.each do |job| %>
-        <%= render partial: "job_card", locals: { job: job } %>
+        <%= render partial: "job_card_partial", locals: { job: job } %>
       <% end %>
     <% end %>
   <% end %>
