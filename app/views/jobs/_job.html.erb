@@ -32,9 +32,10 @@
     <%= form.select :status, %w[Interested Applied Interviewed Offered Rejected], :prompt => 'Status' %>
   </div>
 
+  <%= form.hidden_field :created_by, :value => current_user.id %>
 
   <div>
-    <%= form.button %>
+    <%=form.button %>
   </div>
 
 <% end %>
