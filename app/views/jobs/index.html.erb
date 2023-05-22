@@ -1,31 +1,33 @@
-<h1> Jobs!</h1>
+<% if user_signed_in? %>
 
-<header style="text-align: right">
-  <%= button_to "New Job", new_job_path, method: :get %>
-</header>
+  <% if @jobs.any? %>
 
-<h2> Interested</h2>
-  <% @jobs.select { |job| job.has_status?("Interested") }.each do |job| %>
-    <%= render partial: "job_card_partial", locals: { job: job } %>
+    <h2 class="header">
+      <div style="text-align: center"> Jobs!</div>
+
+      <div style="text-align: right">
+        <%= button_to "New Job", new_job_path, method: :get %>
+      </div>
+    </h2>
+
+    <% %w[Interested Applied Interviewed Offered Rejected].each do |status| %>
+
+      <% if @jobs.any? { |job| job.status == status } %>
+        <h3> <%= status %></h3>
+        <% @jobs.select { |job| job.has_status?(status) }.each do |job| %>
+          <%= render partial: "job_card", locals: { job: job } %>
+        <% end %>
+      <% end %>
+    <% end %>
+  <% else %>
+    Add your first job here:
+    <%= link_to "New Job", new_job_path %>
+  <% end %>
+<% else %>
+  <h1 style="text-align: center"> Job Tracker</h1>
+  <h2 style="text-align: center">
+    Start tracking your application process today by
+    <%= link_to "Signing Up", new_user_registration_path %>
+  </h2>
 <% end %>
 
-<h2> Applied</h2>
-  <% @jobs.select { |job| job.has_status?("Applied") }.each do |job| %>
-    <%= render partial: "job_card_partial", locals: { job: job } %>
-<% end %>
-
-<h2> Interviewed</h2>
-  <% @jobs.select { |job| job.has_status?("Interviewed") }.each do |job| %>
-   <%= render partial: "job_card_partial", locals: { job: job } %>
-<% end %>
-
-<h2> Offered</h2>
-  <% @jobs.select { |job| job.has_status?("Offered") }.each do |job| %>
-    <%= render partial: "job_card_partial", locals: { job: job } %>
-<% end %>
-
-
-<h2> Rejected</h2>
-  <% @jobs.select { |job| job.has_status?("Rejected") }.each do |job| %>
-    <%= render partial: "job_card_partial", locals: { job: job } %>
-<% end %>

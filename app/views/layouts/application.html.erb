@@ -1,20 +1,35 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>JobTracker</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+<head>
+  <p class="notice"><%= notice %></p>
+  <p class="alert"><%= alert %></p>
+  <title>JobTracker</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-    <%= javascript_importmap_tags %>
-  </head>
+  <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+  <%= javascript_importmap_tags %>
+</head>
 
-  <h1>
-    <%= link_to "Home",root_path, method: :get, class:"home_link"%>
-  </h1>
+<h1 class="header">
+  <div class="left">
+    <%= link_to "Home", root_path, method: :get, class: "home_link" %>
+  </div>
+  <div class="right">
+    <% if user_signed_in? %>
+      <%= link_to "Profile", edit_user_registration_path, class: "home_link" %>
+      <%= link_to "Log Out", destroy_user_session_path, method: :delete, class: "home_link" %>
+    <% else %>
+      <% if current_page?(root_path) %>
+        <%= button_to "Sign In", user_session_path, class: "sign_in_link" %>
+      <% else %>
+      <% end %>
+    <% end %>
+  </div>
+</h1>
 
-  <body>
-    <%= yield %>
-  </body>
+<body>
+<%= yield %>
+</body>
 </html>
