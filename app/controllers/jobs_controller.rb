@@ -20,6 +20,9 @@ class JobsController < ApplicationController
   end
 
   def edit
+    unless @job.created_by == current_user.id
+      redirect_to root_path
+    end
   end
 
   def update
