@@ -33,6 +33,10 @@
     color: blue;
 }
 
+.rejected_link {
+    color: red;
+}
+
 .header {
     display: flex;
     justify-content: space-between;
