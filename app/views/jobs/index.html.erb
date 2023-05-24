@@ -10,7 +10,7 @@
       </div>
     </h2>
 
-    <% %w[Interested Applied Interviewed Offered Rejected].each do |status| %>
+    <% %w[Interested Applied Interviewed Offered].each do |status| %>
 
       <% if @jobs.any? { |job| job.status == status } %>
         <h3> <%= status %></h3>
