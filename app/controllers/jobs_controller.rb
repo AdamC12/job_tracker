@@ -4,7 +4,10 @@ class JobsController < ApplicationController
   before_action :confirm_job_owner_is_current_user, only: [:edit, :destroy]
 
   def index
-    @jobs = current_user.jobs
+    if user_signed_in?
+      @jobs = current_user.jobs
+    else
+    end
   end
 
   def new
