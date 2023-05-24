@@ -1,6 +1,6 @@
 class JobsController < ApplicationController
   before_action :set_job, only: [:update, :edit, :destroy]
-  before_action :authenticate_user!, only: [:edit]
+  before_action :authenticate_user!, only: [:edit, :rejected_jobs]
   before_action :confirm_job_owner_is_current_user, only: [:edit, :destroy]
 
   def index
@@ -37,6 +37,10 @@ class JobsController < ApplicationController
     else
       raise "job could not be destroyed"
     end
+  end
+
+  def rejected_jobs
+    @jobs = current_user.jobs.select { |job| job.has_status?("Rejected") }
   end
 
   private

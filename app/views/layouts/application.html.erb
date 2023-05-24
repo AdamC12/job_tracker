@@ -18,6 +18,7 @@
   </div>
   <div class="right">
     <% if user_signed_in? %>
+      <%= link_to "Rejected Jobs", rejected_jobs_path, class: "rejected_link" %>
       <%= link_to "Profile", edit_user_registration_path, class: "home_link" %>
       <%= link_to "Log Out", destroy_user_session_path, method: :delete, class: "home_link" %>
     <% else %>
