@@ -40,8 +40,8 @@ class JobsController < ApplicationController
   end
 
   def rejected_jobs
-    @jobs = current_user.jobs.select { |job| job.has_status?("Rejected")}
     redirect_to root_path unless user_signed_in?
+    @jobs = current_user.jobs.select { |job| job.has_status?("Rejected")}
   end
 
   private
