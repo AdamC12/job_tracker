@@ -40,7 +40,7 @@ class JobsController < ApplicationController
   end
 
   def rejected_jobs
-    @jobs = Job.where { |job| job.has_status?("Rejected") }
+    @jobs = current_user.jobs.select { |job| job.has_status?("Rejected") }
   end
 
   private
