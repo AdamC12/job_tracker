@@ -1,6 +1,6 @@
 <% if user_signed_in? %>
 
-  <% if @jobs.any? { |job| job.created_by == current_user.id } %>
+  <% if @jobs.any? %>
 
     <h2 class="header">
       <div style="text-align: center"> Jobs!</div>
@@ -12,17 +12,19 @@
 
     <% %w[Interested Applied Interviewed Offered Rejected].each do |status| %>
 
-      <% if @jobs.any? { |job| job.status == status && job.created_by == current_user.id } %>
+      <% if @jobs.any? { |job| job.status == status } %>
         <h3> <%= status %></h3>
-        <% @jobs.select { |job| job.has_status?(status) && job.created_by == current_user.id }.each do |job| %>
+        <% @jobs.select { |job| job.has_status?(status) }.each do |job| %>
           <%= render partial: "job_card", locals: { job: job } %>
         <% end %>
       <% end %>
     <% end %>
+
   <% else %>
     Add your first job here:
     <%= link_to "New Job", new_job_path %>
   <% end %>
+
 <% else %>
   <h1 style="text-align: center"> Job Tracker</h1>
   <h2 style="text-align: center">
