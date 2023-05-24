@@ -1,5 +1,5 @@
 <% if @jobs.any? %>
-<% @jobs.select { |job| job.has_status?("Rejected") }.each do |job| %>
+<% @jobs.each do |job| %>
   <%= render partial: "job_card", locals: { job: job } %>
 <% end %>
 <%else %>
