@@ -4,7 +4,8 @@ class Job < ApplicationRecord
   validates :company, presence:true
   validates :link, presence:true
   validates :status, presence:true, inclusion: { in: %w[Interested Applied Interviewed Offered Rejected] }
-  validates :created_by, presence:true
+
+  belongs_to :user
 
   def has_status?(job_status)
     status == job_status

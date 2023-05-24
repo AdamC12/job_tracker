@@ -1,9 +1,10 @@
 class JobsController < ApplicationController
   before_action :set_job, only: [:update, :edit, :destroy]
   before_action :authenticate_user!, only: [:edit]
+  before_action :confirm_job_owner_is_current_user, only: [:edit, :destroy]
 
   def index
-    @jobs = Job.all
+    @jobs = current_user&.jobs || []
   end
 
   def new
@@ -11,7 +12,7 @@ class JobsController < ApplicationController
   end
 
   def create
-    @job = Job.new(job_params.merge(:created_by => current_user.id))
+    @job = current_user.jobs.new(job_params)
     if @job.save
       redirect_to action: :index
     else
@@ -20,9 +21,6 @@ class JobsController < ApplicationController
   end
 
   def edit
-    unless @job.created_by == current_user.id
-      redirect_to root_path
-    end
   end
 
   def update
@@ -44,10 +42,15 @@ class JobsController < ApplicationController
   private
 
   def job_params
-    params.require(:job).permit(:title, :company, :location, :link, :status, :created_by)
+    params.require(:job).permit(:title, :company, :location, :link, :status)
   end
+
   def set_job
     @job = Job.find(params[:id])
+  end
+
+  def confirm_job_owner_is_current_user
+    redirect_to root_path unless @job.user_id == current_user.id
   end
 
 end
