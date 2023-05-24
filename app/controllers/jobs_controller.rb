@@ -44,14 +44,13 @@ class JobsController < ApplicationController
   def job_params
     params.require(:job).permit(:title, :company, :location, :link, :status)
   end
+
   def set_job
     @job = Job.find(params[:id])
   end
 
   def confirm_job_owner_is_current_user
-    unless @job.user_id == current_user.id
-      redirect_to root_path
-    end
+    redirect_to root_path unless @job.user_id == current_user.id
   end
 
 end
