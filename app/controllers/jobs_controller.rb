@@ -1,6 +1,7 @@
 class JobsController < ApplicationController
   before_action :set_job, only: [:update, :edit, :destroy]
   before_action :authenticate_user!, only: [:edit]
+  before_action :confirm_job_owner_is_current_user, only: [:edit, :destroy]
 
   def index
     @jobs = current_user.jobs
@@ -20,9 +21,6 @@ class JobsController < ApplicationController
   end
 
   def edit
-    unless @job.user_id == current_user.id
-       redirect_to root_path
-    end
   end
 
   def update
@@ -48,6 +46,12 @@ class JobsController < ApplicationController
   end
   def set_job
     @job = Job.find(params[:id])
+  end
+
+  def confirm_job_owner_is_current_user
+    unless @job.user_id == current_user.id
+      redirect_to root_path
+    end
   end
 
 end
