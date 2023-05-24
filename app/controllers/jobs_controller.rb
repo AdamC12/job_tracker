@@ -11,7 +11,7 @@ class JobsController < ApplicationController
   end
 
   def create
-    @job = Job.new(job_params)
+    @job = Job.new(job_params(:created_by => current_user.id))
     if @job.save
       redirect_to action: :index
     else
@@ -43,10 +43,9 @@ class JobsController < ApplicationController
 
   private
 
-  def job_params
-    params.require(:job).permit(:title, :company, :location, :link, :status,:created_by)
+  def job_params(merge_param=nil)
+    params.require(:job).permit(:title, :company, :location, :link, :status, :created_by).merge(merge_param)
   end
-
   def set_job
     @job = Job.find(params[:id])
   end
