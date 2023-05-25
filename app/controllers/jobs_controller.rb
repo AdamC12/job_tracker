@@ -2,8 +2,7 @@ class JobsController < ApplicationController
   before_action :set_job, only: [:update, :edit, :destroy]
   before_action :authenticate_user!, only: [:edit, :rejected_jobs]
   before_action :confirm_job_owner_is_current_user, only: [:edit, :destroy]
-  before_action :setup_job_status_list
-
+  before_action :set_job_status_list, only: [:new, :edit, :index, :rejected_jobs]
   def index
     @jobs = current_user&.jobs || []
   end
@@ -58,8 +57,7 @@ class JobsController < ApplicationController
     redirect_to root_path unless @job.user_id == current_user.id
   end
 
-  def setup_job_status_list
-    @status_list = %w[Interested Applied Interviewed Offered Rejected]
+  def set_job_status_list
+    @status_list = Job.status_list
   end
-
 end
