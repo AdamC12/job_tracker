@@ -7,7 +7,7 @@
     <%= form_with model: job do |form| %>
       <div>
         <%= form.label :status %>
-        <%= form.select :status, %w[Interested Applied Interviewed Offered Rejected], :prompt => 'Status' %>
+        <%= form.select :status, @status_list, :prompt => 'Status' %>
         <%= form.button "Update" %>
       </div>
      <%end %>
