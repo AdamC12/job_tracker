@@ -4,14 +4,14 @@
     <p>Job Link: <%= job.link %></p>
     <p>Job Company: <%= job.company %></p>
     <p>Job Location: <%= job.location %></p>
-    <form action="/jobs/3" accept-charset="UTF-8" method="post"><input type="hidden" name="_method" value="patch" autocomplete="off"><input type="hidden" name="authenticity_token" value="2kYUla-BBH6Jcu3dNwX1k06aIh5VZKUZMLPfBqGuowqTkoAIei3is9k_36q9abA8TlT5O-oERx0a9U_BPdyTJg" autocomplete="off">
+    <form action="/jobs/<%job.id %>" accept-charset="UTF-8" method="post"><input type="hidden" name="_method" value="patch" autocomplete="off"><input type="hidden" name="authenticity_token" value="2kYUla-BBH6Jcu3dNwX1k06aIh5VZKUZMLPfBqGuowqTkoAIei3is9k_36q9abA8TlT5O-oERx0a9U_BPdyTJg" autocomplete="off">
       <div>
         <label for="job_status">Status</label>
-        <select name="job[status]" id="job_status"><option value="Interested">Interested</option>
+        <select name=<%job.status %> id=<%job.id %>>><option value="Interested">Interested</option>
           <option value="Applied">Applied</option>
           <option value="Interviewed">Interviewed</option>
           <option value="Offered">Offered</option>
-          <option selected="selected" value="Rejected">Rejected</option></select>
+          <option value="Rejected">Rejected</option></select>
         <button name="button" type="submit">Update</button>
       </div>
     </form>
