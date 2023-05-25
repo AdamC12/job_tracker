@@ -29,7 +29,7 @@
 
   <div>
     <%= form.label :status %>
-    <%= form.select :status, %w[Interested Applied Interviewed Offered Rejected], :prompt => 'Status' %>
+    <%= form.select :status, @status_list, :prompt => 'Status' %>
   </div>
   
   <div>
